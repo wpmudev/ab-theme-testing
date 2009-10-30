@@ -1,0 +1,12 @@
+Plugin Name: A/B Theme Testing Plugin
+Author: Aaron Edwards at uglyrobot.com (for Incsub)
+
+Files:
+----------------------------------------------------------------------
+ab-theme-testing.php
+
+Instructions:
+----------------------------------------------------------------------
+1) Unzip the ab-theme-testing folder in the /wp-content/plugins
+2) Activate the A/B Theme Testing Plugin on the Plugins admin page
+3) Setup the plugin via its A/B Theme Testing admin page under the Appearance menu
