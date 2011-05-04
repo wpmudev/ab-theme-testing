@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: A/B Theme Testing Plugin
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing
 Description: This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking).
 Author: Aaron Edwards (for Incsub)
@@ -214,8 +214,8 @@ function ab_theme_testing_admin_output() {
 		<tr valign="top"> 
 			<th scope="row"><a onclick='window.open("https://www.google.com/support/googleanalytics/bin/answer.py?answer=" + "113500" + "&hl=" + "en_US" , "googlehelp", "scrollbars=yes,menubar=yes,toolbar=yes,location=yes,width=800,height=600,resizable=yes").focus(); return false;' href="https://www.google.com/support/googleanalytics/bin/answer.py?answer=113500&hl=en_US" title="<?php _e('What is this?') ?>" target="_blank"><?php _e('Google Analytics UA Number') ?></a></th> 
 			<td>
-        <input type="text" name="ga_tracking_code" id="ga_tracking_code" class="regular-text" tabindex='40' maxlength="12" value="<?php echo $options['ga_tracking_code']; ?>" />
-				<?php _e('Ex: UA-XXXXX-X') ?><br />
+        <input type="text" name="ga_tracking_code" id="ga_tracking_code" class="regular-text" tabindex='40' maxlength="14" value="<?php echo $options['ga_tracking_code']; ?>" />
+				<?php _e('Ex: UA-XXXXXXXX-X') ?><br />
 				<small><?php _e('IMPORTANT: Leave blank if you already have Google Analytics tracking code added in your template or via another plugin.') ?></small>
 			</td>
 		</tr>
