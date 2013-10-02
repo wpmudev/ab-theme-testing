@@ -45,27 +45,6 @@ function ab_theme_testing_plug_pages() {
 	add_submenu_page('themes.php', __('A/B Theme Testing'), __('A/B Theme Testing'), 'switch_themes', 'ab_theme_testing', 'ab_theme_testing_admin_output' );
 }
 
-function ab_theme_testing_options_process() {
-		
-	if (isset($_POST['submit'])) {
-		if (!check_admin_referer('ab_theme_testing')) die("Security Problem");
-		
-		$options = array();
-		
-		//process options
-		$options['testing_enable'] = ($_POST['ab_theme_testing_enable']==1) ? 1 : 0;
-		
-		//process themes
-    if (is_array($_POST['theme'])) {
-      $options['tracking_themes'] = array_keys($_POST['theme']);
-    } else {
-      $options['tracking_themes'] = array();
-    }
-		
-		update_option('ab_theme_testing', $options);
-	}
-}
-
 //if theme cookie not set, choose random theme and set cookie
 function ab_theme_testing_random_theme() {
   global $current_ab_theme;
@@ -140,7 +119,7 @@ function ab_theme_testing_tracking_output() {
   $options = get_option('ab_theme_testing');
   $bits = explode('|', $current_ab_theme);
 	
-  $segment = $bits[1];
+  $segment = $bits[0];
   
 	//what GA variable slot to put it in
 	if (!defined('AB_THEME_TESTING_SLOT'))
@@ -167,7 +146,24 @@ function ab_theme_testing_admin_output() {
   if ( function_exists('current_user_can') && !current_user_can('switch_themes') )
 		wp_die(__('Cheatin&#8217; uh?'));
 			
-  ab_theme_testing_options_process();
+  if (isset($_POST['save_settings'])) {
+		if (!check_admin_referer('ab_theme_testing')) die("Security Problem");
+		
+		$options = array();
+		
+		//process options
+		$options['testing_enable'] = ($_POST['ab_theme_testing_enable']==1) ? 1 : 0;
+		
+		//process themes
+    if (is_array($_POST['theme'])) {
+      $options['tracking_themes'] = array_keys($_POST['theme']);
+    } else {
+      $options['tracking_themes'] = array();
+    }
+		
+		update_option('ab_theme_testing', $options);
+		?><div id="message" class="updated fade"><p><?php _e('Settings Saved!') ?></p></div><?php
+	}
   
   $options = get_option('ab_theme_testing');
   
@@ -178,10 +174,6 @@ function ab_theme_testing_admin_output() {
 	 ?><div id="message" class="error"><p>WARNING: This plugin is incompatible with WP Super Cache. You must set it to "HALF ON" mode or turn it to "OFF".</p></div><?php
     $disable = ' disabled="disabled"';
   }
-  
-  if (isset($_POST['save_settings'])) {
-	 ?><div id="message" class="updated fade"><p><?php _e('Settings Saved!') ?></p></div><?php
-	}
 	?>    
 	<h2><?php _e('A/B Theme Testing Settings') ?></h2>
 	<p>
