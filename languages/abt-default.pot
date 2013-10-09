@@ -1,0 +1,108 @@
+# Copyright (C) 2013 A/B Theme Testing Plugin
+# This file is distributed under the same license as the A/B Theme Testing Plugin package.
+msgid ""
+msgstr ""
+"Project-Id-Version: A/B Theme Testing Plugin 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/ab-theme-testing\n"
+"POT-Creation-Date: 2013-10-09 16:59:20+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: ab-theme-testing.php:53
+msgid "A/B Theme Testing"
+msgstr ""
+
+#: ab-theme-testing.php:155
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: ab-theme-testing.php:173
+msgid "Settings Saved!"
+msgstr ""
+
+#: ab-theme-testing.php:182
+msgid "WARNING: This plugin is incompatible with WP Super Cache. You must set it to \"HALF ON\" mode or turn it to \"OFF\"."
+msgstr ""
+
+#: ab-theme-testing.php:186
+msgid "A/B Theme Testing Settings"
+msgstr ""
+
+#: ab-theme-testing.php:188
+msgid "This plugin rotates themes to assign them evenly between visitors. A visitor's theme assignment is saved via a cookie and only changes when you disable the plugin or choose different themes to test. It also creates a custom segment in Google Analytics for each theme visitors are assigned. The segment names will be of the format \"Theme Test: THEMENAME\" in Analytics. You can then analyze browsing and buying behavior based upon the custom segments named after the themes selected for testing."
+msgstr ""
+
+#: ab-theme-testing.php:189
+msgid "More information on custom segmentations in Analytics &raquo;"
+msgstr ""
+
+#: ab-theme-testing.php:191
+msgid "The custom segment data may take up to 24 hours to begin showing in Analytics. Click the \"User Defined\" link under \"Visitors\", then select the \"Goal Conversion\" tab. (Note: You will have to create at least one goal or funnel in Google Analytics to track conversions!)"
+msgstr ""
+
+#: ab-theme-testing.php:192
+msgid "Screenshot of the Google Analytics User Defined area with theme testing data."
+msgstr ""
+
+#: ab-theme-testing.php:196
+msgid "Enable Theme Testing?"
+msgstr ""
+
+#: ab-theme-testing.php:199 ab-theme-testing.php:207
+msgid "Enable"
+msgstr ""
+
+#: ab-theme-testing.php:204
+msgid "Track Admin Pages?"
+msgstr ""
+
+#: ab-theme-testing.php:209
+msgid "You may want to track admin pages if your Goal or Conversion screen occurs in the wp-admin/ area for logged in users."
+msgstr ""
+
+#: ab-theme-testing.php:214
+msgid "Select at least 2 themes you would like to test"
+msgstr ""
+
+#: ab-theme-testing.php:218
+msgid "Theme"
+msgstr ""
+
+#: ab-theme-testing.php:219
+msgid "Version"
+msgstr ""
+
+#: ab-theme-testing.php:250
+msgid "Save Settings &raquo;"
+msgstr ""
+
+#: dash-notice/wpmudev-dash-notification.php:57
+msgid "Easily get updates, support, and one-click WPMU DEV plugin/theme installations right from in your dashboard - <strong><a href=\"%s\" title=\"Install Now &raquo;\">install the free WPMU DEV Dashboard plugin</a></strong>. &nbsp;&nbsp;&nbsp;<small><a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">(find out more)</a></small>"
+msgstr ""
+
+#: dash-notice/wpmudev-dash-notification.php:61
+msgid "Updates, Support, Premium Plugins, Community - <strong><a href=\"%s\" title=\"Activate Now &raquo;\">activate the WPMU DEV Dashboard plugin now</a></strong>."
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "A/B Theme Testing Plugin"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/ab-theme-testing"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking)."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aaron Edwards (for Incsub)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://uglyrobot.com"
+msgstr ""
