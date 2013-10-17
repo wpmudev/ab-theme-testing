@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: A/B Theme Testing Plugin
-Version: 1.2
+Version: 1.3
 Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing
 Description: This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking).
 Author: Aaron Edwards (for Incsub)
@@ -136,10 +136,10 @@ function ab_theme_testing_tracking_output() {
 	<script type="text/javascript">
 		if (typeof(pageTracker) !== 'undefined') {
 			pageTracker._setCustomVar(<?php echo AB_THEME_TESTING_SLOT; ?>, "Theme Test", "<?php echo $segment; ?>", 2);
-			pageTracker._trackPageview();
+			pageTracker._trackEvent('AB Testing', 'Set Theme', "<?php echo $segment; ?>", false, true);
 		} else if (typeof(_gaq) !== 'undefined') {
 			_gaq.push(['_setCustomVar', <?php echo AB_THEME_TESTING_SLOT; ?>, "Theme Test", "<?php echo $segment; ?>", 2]);
-			_gaq(['_trackPageview']);
+			_gaq.push(['_trackEvent', 'AB Testing', 'Set Theme', "<?php echo $segment; ?>", false, true]);
 		}
 	</script>
 	<?php
