@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the A/B Theme Testing Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: A/B Theme Testing Plugin 1.1\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/ab-theme-testing\n"
-"POT-Creation-Date: 2013-10-09 16:59:20+00:00\n"
+"Project-Id-Version: A/B Theme Testing Plugin 1.3.1\n"
+"Report-Msgid-Bugs-To: http://premium.wpmudev.org/\n"
+"POT-Creation-Date: 2013-10-31 19:42:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,7 @@ msgid "More information on custom segmentations in Analytics &raquo;"
 msgstr ""
 
 #: ab-theme-testing.php:191
-msgid "The custom segment data may take up to 24 hours to begin showing in Analytics. Click the \"User Defined\" link under \"Visitors\", then select the \"Goal Conversion\" tab. (Note: You will have to create at least one goal or funnel in Google Analytics to track conversions!)"
+msgid "Your site must already have GA tracking code enabled on your site via a plugin or theme. A/B Theme Testing is compatible with both the older and newer asynchronous tracking code. The custom segment data may take up to 24 hours to begin showing in Analytics. Click the \"User Defined\" link under \"Visitors\", then select the \"Goal Conversion\" tab. (Note: You will have to create at least one goal or funnel in Google Analytics to track conversions!)"
 msgstr ""
 
 #: ab-theme-testing.php:192
@@ -52,31 +52,23 @@ msgstr ""
 msgid "Enable Theme Testing?"
 msgstr ""
 
-#: ab-theme-testing.php:199 ab-theme-testing.php:207
+#: ab-theme-testing.php:199
 msgid "Enable"
 msgstr ""
 
-#: ab-theme-testing.php:204
-msgid "Track Admin Pages?"
-msgstr ""
-
-#: ab-theme-testing.php:209
-msgid "You may want to track admin pages if your Goal or Conversion screen occurs in the wp-admin/ area for logged in users."
-msgstr ""
-
-#: ab-theme-testing.php:214
+#: ab-theme-testing.php:205
 msgid "Select at least 2 themes you would like to test"
 msgstr ""
 
-#: ab-theme-testing.php:218
+#: ab-theme-testing.php:209
 msgid "Theme"
 msgstr ""
 
-#: ab-theme-testing.php:219
+#: ab-theme-testing.php:210
 msgid "Version"
 msgstr ""
 
-#: ab-theme-testing.php:250
+#: ab-theme-testing.php:241
 msgid "Save Settings &raquo;"
 msgstr ""
 
