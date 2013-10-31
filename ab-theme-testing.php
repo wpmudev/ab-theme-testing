@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: A/B Theme Testing Plugin
-Version: 1.3
+Version: 1.3.1
 Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing
 Description: This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking).
 Author: Aaron Edwards (for Incsub)
@@ -188,7 +188,7 @@ function ab_theme_testing_admin_output() {
   <?php _e('This plugin rotates themes to assign them evenly between visitors. A visitor\'s theme assignment is saved via a cookie and only changes when you disable the plugin or choose different themes to test. It also creates a custom segment in Google Analytics for each theme visitors are assigned. The segment names will be of the format "Theme Test: THEMENAME" in Analytics. You can then analyze browsing and buying behavior based upon the custom segments named after the themes selected for testing.', 'abt') ?>
   <a href="http://analytics.blogspot.com/2009/07/segment-your-traffic-with-user-defined.html" target="_blank"><?php _e('More information on custom segmentations in Analytics &raquo;', 'abt') ?></a>
   </p>
-	<p><?php _e('The custom segment data may take up to 24 hours to begin showing in Analytics. Click the "User Defined" link under "Visitors", then select the "Goal Conversion" tab. (Note: You will have to create at least one goal or funnel in Google Analytics to track conversions!)', 'abt') ?></p>
+	<p><?php _e('Your site must already have GA tracking code enabled on your site via a plugin or theme. A/B Theme Testing is compatible with both the older and newer asynchronous tracking code. The custom segment data may take up to 24 hours to begin showing in Analytics. Click the "User Defined" link under "Visitors", then select the "Goal Conversion" tab. (Note: You will have to create at least one goal or funnel in Google Analytics to track conversions!)', 'abt') ?></p>
   <p style="text-align:center;"><img src="../../wp-content/plugins/ab-theme-testing/screenshot.jpg" alt="<?php _e('Screenshot of the Google Analytics User Defined area with theme testing data.', 'abt') ?>" title="<?php _e('Screenshot of the Google Analytics User Defined area with theme testing data.', 'abt') ?>" /></p>
   <form method="post" action="">
 	<table class="form-table">
@@ -196,17 +196,8 @@ function ab_theme_testing_admin_output() {
 			<th scope="row"><?php _e('Enable Theme Testing?', 'abt') ?></th> 
 			<td>
         <label>
-				  <input name="ab_theme_testing_enable" id="ab_theme_testing_enable" type="checkbox" value="1" <?php checked('1', $options['testing_enable']); ?><?php echo $disable; ?> /> <?php _e('Enable', 'abt') ?>
+				  <input name="ab_theme_testing_enable" id="ab_theme_testing_enable" type="checkbox" value="1" <?php checked('1', @$options['testing_enable']); ?><?php echo $disable; ?> /> <?php _e('Enable', 'abt') ?>
 				</label>
-			</td>
-		</tr>
-		<tr valign="top"> 
-			<th scope="row"><?php _e('Track Admin Pages?', 'abt') ?></th> 
-			<td>
-        <label>
-				  <input name="ab_theme_testing_admin_track" id="ab_theme_testing_admin_track" type="checkbox" value="1" <?php checked('1', $options['admin_track']); ?> /> <?php _e('Enable', 'abt') ?>
-				</label><br />
-				<small><?php _e('You may want to track admin pages if your Goal or Conversion screen occurs in the wp-admin/ area for logged in users.', 'abt') ?></small>
 			</td>
 		</tr>
 	</table>
@@ -227,7 +218,7 @@ function ab_theme_testing_admin_output() {
 			$class = ('alt' == $class) ? '' : 'alt';
 			$class1 = $enabled = $disabled = '';
 		  
-		  if (is_array($options['tracking_themes']))
+		  if (isset($options['tracking_themes']) && is_array($options['tracking_themes']))
         $checked = ( in_array($theme_key, $options['tracking_themes']) ) ? 'checked="checked"' : '';
         
 			$class1 = ' active';
