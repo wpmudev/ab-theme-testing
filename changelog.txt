@@ -5,6 +5,12 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+1.3.2 - 1/3/2014
+----------------------------------------------------------------------
+- Fix tracking code not working with asynchronus GA
+- Added notice to themes page to prevent confusion when you can't change themes with the test active
+- Fix various php notices
+
 1.3.1 - 10/31/2013
 ----------------------------------------------------------------------
 - Remove disabled old admin tracking option

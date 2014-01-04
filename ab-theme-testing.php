@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: A/B Theme Testing Plugin
-Version: 1.3.1
+Version: 1.3.2
 Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing
 Description: This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking).
 Author: Aaron Edwards (for Incsub)
@@ -11,7 +11,7 @@ WDP ID: 174
 */
 
 /* 
-Copyright 2009-2013 Incsub (http://incsub.com)
+Copyright 2009-2014 Incsub (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -35,9 +35,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //---Hooks----------------------------------------------------------------//
 //------------------------------------------------------------------------//
 
-add_action('admin_menu', 'ab_theme_testing_plug_pages');
-add_action('plugins_loaded', 'ab_theme_testing_random_theme');
+add_action( 'admin_menu', 'ab_theme_testing_plug_pages' );
+add_action( 'plugins_loaded', 'ab_theme_testing_random_theme' );
 add_action( 'plugins_loaded', 'ab_theme_testing_localization' );
+add_action( 'admin_notices', 'ab_theme_testing_notice' );
 
 //------------------------------------------------------------------------//
 //---Functions------------------------------------------------------------//
@@ -51,6 +52,19 @@ function ab_theme_testing_localization() {
 	
 function ab_theme_testing_plug_pages() {
 	add_submenu_page('themes.php', __('A/B Theme Testing', 'abt'), __('A/B Theme Testing', 'abt'), 'switch_themes', 'ab_theme_testing', 'ab_theme_testing_admin_output' );
+}
+
+function ab_theme_testing_notice() {
+	$screen = get_current_screen();
+	if ( 'themes' != $screen->id ) return false;
+	
+	$options = get_option('ab_theme_testing');
+	
+	//is testing enabled and possible?
+	if ($options['testing_enable']==0 || !is_array($options['tracking_themes']) || count($options['tracking_themes']) < 2)
+    return;
+	
+	echo '<div class="error"><p>'.__('NOTE: Theme changes made here will not be visible while your A/B Theme test is enabled.', 'abt').'</p></div>';
 }
 
 //if theme cookie not set, choose random theme and set cookie
@@ -134,12 +148,12 @@ function ab_theme_testing_tracking_output() {
 		define('AB_THEME_TESTING_SLOT', 1);
   ?>
 	<script type="text/javascript">
-		if (typeof(pageTracker) !== 'undefined') {
+		if (typeof(pageTracker) != 'undefined') {
 			pageTracker._setCustomVar(<?php echo AB_THEME_TESTING_SLOT; ?>, "Theme Test", "<?php echo $segment; ?>", 2);
-			pageTracker._trackEvent('AB Testing', 'Set Theme', "<?php echo $segment; ?>", false, true);
-		} else if (typeof(_gaq) !== 'undefined') {
+			pageTracker._trackEvent('AB Testing', 'Set Theme', "<?php echo $segment; ?>", 1, true);
+		} else if (typeof(_gaq) != 'undefined') {
 			_gaq.push(['_setCustomVar', <?php echo AB_THEME_TESTING_SLOT; ?>, "Theme Test", "<?php echo $segment; ?>", 2]);
-			_gaq.push(['_trackEvent', 'AB Testing', 'Set Theme', "<?php echo $segment; ?>", false, true]);
+			_gaq.push(['_trackEvent', 'AB Testing', 'Set Theme', "<?php echo $segment; ?>", 1, true]);
 		}
 	</script>
 	<?php
@@ -160,7 +174,7 @@ function ab_theme_testing_admin_output() {
 		$options = array();
 		
 		//process options
-		$options['testing_enable'] = ($_POST['ab_theme_testing_enable']==1) ? 1 : 0;
+		$options['testing_enable'] = isset($_POST['ab_theme_testing_enable']) ? 1 : 0;
 		
 		//process themes
     if (is_array($_POST['theme'])) {
@@ -178,6 +192,7 @@ function ab_theme_testing_admin_output() {
   echo '<div class="wrap">';
   
   global $super_cache_enabled;
+	$disable = '';
   if ($super_cache_enabled) {
 	 ?><div id="message" class="error"><p><?php _e('WARNING: This plugin is incompatible with WP Super Cache. You must set it to "HALF ON" mode or turn it to "OFF".', 'abt') ?></p></div><?php
     $disable = ' disabled="disabled"';
@@ -212,9 +227,10 @@ function ab_theme_testing_admin_output() {
 		</thead>
 		<tbody id="plugins">
 		<?php
-		$themes = get_themes();
+		$themes = wp_get_themes();
 		foreach( (array) $themes as $key => $theme ) {
 			$theme_key = $theme->stylesheet.'|'.$theme->template;
+			$class = '';
 			$class = ('alt' == $class) ? '' : 'alt';
 			$class1 = $enabled = $disabled = '';
 		  
