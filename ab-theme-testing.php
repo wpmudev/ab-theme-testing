@@ -2,17 +2,16 @@
 /*
 Plugin Name: A/B Theme Testing Plugin
 Version: 1.3.2
-Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing
+Plugin URI: http://premium.wpmudev.org/project/ab-theme-testing/
 Description: This plugin rotates themes for A/B testing integrating with Google Analytics. One theme gets shown for A, another for B and so on (and the user who sees a theme keeps on seeing it when they come back via cookie tracking).
 Author: WPMU DEV
-Contributors: Aaron Edwards
-Author URI: http://uglyrobot.com
+Author URI: http://premium.wpmudev.org/
 Textdomain: abt
 WDP ID: 174
 */
 
 /* 
-Copyright 2009-2014 Incsub (http://incsub.com)
+Copyright 2007-2014 Incsub (http://incsub.com)
 Author - Aaron Edwards
 Contributors - 
   
