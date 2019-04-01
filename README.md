@@ -15,8 +15,6 @@ You can compare two themes with minor differences, or completely different desig
 
 We were able to measure the difference between 'get this plugin' and download this plugin', and also the position of buttons, just by using four different WordPress themes with a few different tweaks. We've gone on to improve, support and update this plugin for thousands of users. Give A/B Theme Testing a go and you won't be disappointed – create a more user friendly experience and start making more money.
 
-Start by reading [Installing Plugins](https://premium.wpmudev.org/wpmu-manual/using-regular-plugins-on-wpmu/) section in our [comprehensive WordPress and WordPress Multisite Manual](https://premium.wpmudev.org/wpmu-manual/) if you are new to WordPress.
-
 ### New Features
 
 Now includes support for child-themes too. How awesome is that?
