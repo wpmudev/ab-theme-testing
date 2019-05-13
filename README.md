@@ -2,8 +2,13 @@
 
 **INACTIVE NOTICE: This plugin is unsupported by WPMUDEV, we've published it here for those technical types who might want to fork and maintain it for their needs.**
 
+## Translations
 
-## A/B Theme Testing integrates with Google Analytics to let you test two or more WordPress themes against each other.
+Translation files can be found at https://github.com/wpmudev/translations
+
+## Usage
+
+### A/B Theme Testing integrates with Google Analytics to let you test two or more WordPress themes against each other.
 
 Improve your conversions, reduce bounce rates and increase pageviews without having to get involved in any code.
 
